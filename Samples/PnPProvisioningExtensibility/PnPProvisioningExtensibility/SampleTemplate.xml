@@ -1,0 +1,70 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2018/01/ProvisioningSchema https://raw.githubusercontent.com/OfficeDev/PnP-Provisioning-Schema/master/OfficeDevPnP.ProvisioningSchema/ProvisioningSchema-2018-01.xsd">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.23.1802.0, Culture=neutral, PublicKeyToken=null" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-3E34E7B0EA5F4272AB92F60A6394BED3">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-3E34E7B0EA5F4272AB92F60A6394BED3" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
+      <pnp:SiteFields>
+        <Field ID="{f4be4904-d734-4822-b28f-9222b2e113cc}" Name="PnPEmail" DisplayName="Email Address" Type="Text" Required="FALSE" Group="PnP Columns" SourceID="{88a250c5-31b2-4d64-b047-482e2a6e5e7a}" StaticName="PnPEmail" />
+        <Field ID="{be063928-449e-4f14-a145-203034cc996c}" Name="PnPContactType" DisplayName="Contact Type" Type="Choice" Required="FALSE" Group="PnP Columns" SourceID="{88a250c5-31b2-4d64-b047-482e2a6e5e7a}" StaticName="PnPContactType">
+          <CHOICES>
+            <CHOICE>Customer</CHOICE>
+            <CHOICE>Supplier</CHOICE>
+            <CHOICE>Employee</CHOICE>
+          </CHOICES>
+        </Field>
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0100582B87B16AD543D4BE9B0F965B152472" Name="PnPContact" Description="Company Contact" Group="PnP Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="f4be4904-d734-4822-b28f-9222b2e113cc" Name="Email Address" />
+            <pnp:FieldRef ID="be063928-449e-4f14-a145-203034cc996c" Name="Contact Type" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+      <pnp:Lists>
+        <pnp:ListInstance Title="Contacts List" Description="Contacts List" DocumentTemplate="" TemplateType="100" Url="Lists/Contacts" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Contacts/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Contacts/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Contacts/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ReadSecurity="1" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100582B87B16AD543D4BE9B0F965B152472" Default="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{99548A8E-2B8D-4C22-BF6B-30C0E180547B}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/temp2017052301/Lists/Contacts/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="PnPEmail" />
+                <FieldRef Name="PnPContactType" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3a6b296c-3f50-445c-a13f-9c679ea9dda3}" Hidden="FALSE" ReadOnly="TRUE" Required="FALSE" Type="Text" Name="ComplianceAssetId" ShowInFileDlg="FALSE" DisplayName="Compliance Asset Id" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ComplianceAssetId" FromBaseType="TRUE" ColName="nvarchar5" RowOrdinal="0" />
+          </pnp:Fields>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="f4be4904-d734-4822-b28f-9222b2e113cc" Name="PnPEmail" DisplayName="Email Address" />
+            <pnp:FieldRef ID="be063928-449e-4f14-a145-203034cc996c" Name="PnPContactType" DisplayName="Contact Type" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
+      </pnp:Lists>
+
+      <pnp:Providers>
+        <pnp:Provider Enabled="true" HandlerType="PnPProvisioningExtensibility.CustomExtensibilityHandler, PnPProvisioningExtensibility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <pnp:Configuration>
+            <my:customConfig xmlns:my="http://schemas.piasys.com/MyCustomConfig">
+              <my:something>here!</my:something>
+            </my:customConfig>
+          </pnp:Configuration>
+        </pnp:Provider>
+      </pnp:Providers>
+      
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+    
+</pnp:Provisioning>
